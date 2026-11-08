@@ -552,11 +552,11 @@ class OnPolicyRunner:
             policy: The policy to export.
 
         Returns:
-            A dummy input tensor with a batch dimension of one.
+            A dummy input tensor with a batch dimension of two.
         """
         if isinstance(policy, CNNModel):
-            return torch.randn(1, policy.input_channels, *policy.input_dim)
-        return torch.randn(1, policy.input_dim)
+            return torch.randn(2, policy.input_channels, *policy.input_dim)
+        return torch.randn(2, policy.input_dim)
 
     def export_policy_to_jit(self, path: str, filename: str = "policy.pt") -> None:
         """Export the policy to TorchScript format.
